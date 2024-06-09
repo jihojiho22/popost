@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react-router-dom';
 import Login from './auth/Login';
 import Signup from './auth/Signup';
 import './App.css';
@@ -10,16 +10,25 @@ import Post from './navbar/Post';
 import Profile from './navbar/Profile';
 
 
+
 function App() {
   const { userLoggedIn, currentUser, isEmailUser, isGoogleUser } = useAuth() || {};
-  const debug = () => {
-      console.log( "userLoggedIn: ",userLoggedIn);
-      console.log( "currentUser: ",currentUser);
-      console.log( "isEmailUser: ",isEmailUser);
-      console.log( "isGoogleUser: ",isGoogleUser);
+
+  const debug = (e) => {
+    e.preventDefault();
+    if (currentUser) {
+      console.log(currentUser.username);
+      console.log("userLoggedIn= ", userLoggedIn);
+      console.log("isEmailUser= ", isEmailUser);
+      console.log("isGoogleUser= ", isGoogleUser);
+      console.log("data of currentUser = ", currentUser);
+    } else {
+      console.log("no current user");
+    }
   };
  const signOut = () => {
     doSignOut();
+    
  }
   return (
     <Router>

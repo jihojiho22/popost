@@ -36,6 +36,11 @@ function Post() {
     (currentPage - 1) * ITEMS_PER_PAGE,
     currentPage * ITEMS_PER_PAGE
   );
+  useEffect(() => {
+    if (!userLoggedIn) {
+      setPosts([]);
+    }
+  }, [userLoggedIn]);
 
   useEffect(() => {
     setTotalPages(Math.ceil(posts.length / ITEMS_PER_PAGE));
@@ -96,31 +101,28 @@ function Post() {
   };
 
   const fetchPosts = async () => {
-    const querySnapshot = await getDocs(collection(firestore, 'posts'));
-    const postsData = [];
-    querySnapshot.forEach((doc) => {
-      postsData.push({ id: doc.id, ...doc.data(), likes: doc.data().likes || [] });
-    });
-    postsData.sort((a, b) => b.createdAt.seconds - a.createdAt.seconds);
-    setPosts(postsData);
+    if (userLoggedIn) {
+      const querySnapshot = await getDocs(collection(firestore, 'posts'));
+      const postsData = [];
+      querySnapshot.forEach((doc) => {
+        postsData.push({ id: doc.id, ...doc.data(), likes: doc.data().likes || [] });
+      });
+      postsData.sort((a, b) => b.createdAt.seconds - a.createdAt.seconds);
+      setPosts(postsData);
+    } else {
+      // User is not logged in, clear the posts
+      setPosts([]);
+    }
   };
 
   useEffect(() => {
     fetchPosts();
   }, [userLoggedIn, postContent]);
 
-  const debug = (e) => {
-    e.preventDefault();
-    if (currentUser) {
-      console.log(currentUser.username);
-      console.log("userLoggedIn= ", userLoggedIn);
-      console.log("isEmailUser= ", isEmailUser);
-      console.log("isGoogleUser= ", isGoogleUser);
-      console.log("data of currentUser = ", currentUser);
-    } else {
-      console.log("no current user");
-    }
-  };
+
+  if (!userLoggedIn) {
+    return null; 
+  }
 
   return (
     <div className="home-container">
@@ -163,8 +165,6 @@ function Post() {
           </div>
         </>
       )}
-      <p>This is the home page where users can see posts.</p>
-      <Button variant="info" onClick={debug}>debug</Button>
     </div>
   );
 }

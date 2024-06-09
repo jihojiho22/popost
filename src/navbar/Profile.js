@@ -3,8 +3,11 @@ import { useAuth } from '../contexts/authContext';
 import './Profile.css';
 
 const Profile = () => {
-  const { currentUser, isGoogleUser } = useAuth();
+  const { currentUser, isGoogleUser, userLoggedIn } = useAuth();
 
+  if (!userLoggedIn) {
+    return null; 
+  }
   return (
     <div className="profile-container">
       <h2>User Profile</h2>
