@@ -1,14 +1,11 @@
-/* Post.css */
 
-/* General Styles */
 .home-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
     font-family: 'Roboto', sans-serif;
   }
-  
-  /* Post Input */
+
   .post-input {
     margin-bottom: 20px;
   }
@@ -39,7 +36,7 @@
     background-color: #45a049;
   }
   
-  /* Posts List */
+
   .posts-list {
     display: flex;
     flex-wrap: wrap;
@@ -48,8 +45,8 @@
   
   .post-item {
     position:relative;
-    width: calc(33.33% - 20px); /* Adjust the width as needed */
-    margin-right: 20px; /* Add some spacing between posts */
+    width: calc(33.33% - 20px);
+    margin-right: 20px; 
     margin-bottom: 20px;
     background-color: #f9f9f9;
     padding: 20px;
@@ -57,17 +54,17 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
-  /* Responsive styles for smaller screens */
+ 
   @media (max-width: 768px) {
     .post-item {
-      width: calc(50% - 10px); /* Adjust the width for smaller screens */
-      margin-right: 10px; /* Adjust the spacing between posts */
+      width: calc(50% - 10px); 
+      margin-right: 10px; 
     }
   }
   
   @media (max-width: 480px) {
     .post-item {
-      width: 100%; /* Make posts full-width on very small screens */
+      width: 100%; 
       margin-right: 0;
     }
   }
@@ -89,7 +86,7 @@
     background-color: #d32f2f;
   }
   
-  /* Pagination */
+ 
   .pagination {
     display: flex;
     justify-content: center;

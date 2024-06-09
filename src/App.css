@@ -48,14 +48,15 @@
 .App-nav a:hover {
   color: #ccc;
 }
-
 .App-main {
   flex: 1;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 2rem;
 }
+
 
 .logout-btn {
   background-color: #ff6347;

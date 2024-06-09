@@ -62,7 +62,7 @@ const Login = () => {
           {loading ? 'Loading...' : 'Login'}
         </button>
       </form>
-      <button onClick={handleGoogleLogin} disabled={loading}>
+      <button className="google-login" onClick={handleGoogleLogin} disabled={loading}>
         {loading ? 'Loading...' : 'Login with Google'}
       </button>
     </div>
