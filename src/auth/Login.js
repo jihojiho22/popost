@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { doSignInWithEmailAndPassword, doSignInWithGoogle } from '../firebase/auth';
 import './Login.css';
+import { updateProfile } from 'firebase/auth';
 
 const Login = () => {
   const [email, setEmail] = useState('');

@@ -138,7 +138,7 @@ function Post() {
       <h1>Welcome to the popost!</h1>
       {userLoggedIn && (
         <>
-          <p>Hello, {currentUser.email}</p>
+          <p>Hello, {currentUser.displayName}</p>
           <div className="bear-image-container">
         <img src={bearImage} alt="Bear" className="bear-image" />
       </div>
