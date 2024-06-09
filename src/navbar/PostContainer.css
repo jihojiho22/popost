@@ -1,0 +1,27 @@
+.post-content {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.likes-section {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.likes-section .fa-heart {
+  color: #ccc;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.likes-section .liked {
+  color: #ff6b6b;
+}
+
+.likes-section span {
+  font-size: 14px;
+  color: #666;
+}
