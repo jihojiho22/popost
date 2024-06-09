@@ -120,4 +120,32 @@
     cursor: pointer;
     margin: 0 10px;
   }
+  .post-btn{
+    text-align: center;
+    left:50%;
+    position:relative;
+  }
+  .bear-image-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
   
+  .bear-image {
+    max-width: 200px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  .word-count {
+    margin-left: 10px;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    left:50%;
+    
+  }
+  
+  .exceeded {
+    color: red;
+  }

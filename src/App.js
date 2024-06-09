@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react-router-dom';
 import Login from './auth/Login';
 import Signup from './auth/Signup';
@@ -30,6 +30,9 @@ function App() {
     doSignOut();
     
  }
+
+
+
   return (
     <Router>
       <div className="App">

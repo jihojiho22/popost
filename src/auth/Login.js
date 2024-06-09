@@ -19,7 +19,7 @@ const Login = () => {
       setLoading(false);
       setTimeout(() => {
         navigate('/');
-      }, 2000); // Redirect to root path after 2 seconds
+      }, 1000); // Redirect to root path after 1 seconds
     } catch (error) {
       setError(error.message);
       setLoading(false);

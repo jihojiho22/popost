@@ -2,7 +2,7 @@ import React from 'react';
 import { FaHeart } from 'react-icons/fa';
 import './PostContainer.css';
 
-const PostContent = ({ post, currentUser, handleLikePost, handleDeletePost }) => {
+const PostContainer = ({ post, currentUser, handleLikePost, handleDeletePost }) => {
   return (
     <div className="post-item">
       <p className="post-content">
@@ -24,4 +24,4 @@ const PostContent = ({ post, currentUser, handleLikePost, handleDeletePost }) =>
   );
 };
 
-export default PostContent;
+export default PostContainer;

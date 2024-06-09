@@ -7,9 +7,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { FaArrowLeft, FaArrowRight, FaHeart } from 'react-icons/fa';
 import './Post.css';
 import PostContainer from './PostContainer';
-
+import bearImage from './nybear.jpg';
 function Post() {
   const ITEMS_PER_PAGE = 9;
+  const TOTAL_WORDS = 20;
   const [currentPage, setCurrentPage] = useState(1);
   const { userLoggedIn, currentUser, isEmailUser, isGoogleUser } = useAuth() || {};
   const [postContent, setPostContent] = useState('');
@@ -59,20 +60,26 @@ function Post() {
     if (!postContent.trim()) {
       return;
     }
-
-    try {
-      const docRef = await addDoc(collection(firestore, 'posts'), {
-        content: postContent,
-        userId: currentUser.email,
-        createdAt: serverTimestamp(),
-        likes: []
-      });
-
+    if(postContent.length > TOTAL_WORDS) {
+      alert("Post must be less than 20 words");
       setPostContent('');
-      fetchPosts();
-    } catch (error) {
-      console.error("Error adding post: ", error);
+      return;
+    } else { 
+      try {
+        const docRef = await addDoc(collection(firestore, 'posts'), {
+          content: postContent,
+          userId: currentUser.email,
+          createdAt: serverTimestamp(),
+          likes: []
+        });
+  
+        setPostContent('');
+        fetchPosts();
+      } catch (error) {
+        console.error("Error adding post: ", error);
+      }
     }
+   
   };
 
   const handleLikePost = async (postId) => {
@@ -96,6 +103,7 @@ function Post() {
     }
   };
 
+  
   const handleInputChange = (e) => {
     setPostContent(e.target.value);
   };
@@ -120,23 +128,33 @@ function Post() {
   }, [userLoggedIn, postContent]);
 
 
+
   if (!userLoggedIn) {
     return null; 
   }
 
   return (
     <div className="home-container">
-      <h1>Welcome to the project!</h1>
+      <h1>Welcome to the popost!</h1>
       {userLoggedIn && (
         <>
           <p>Hello, {currentUser.email}</p>
+          <div className="bear-image-container">
+        <img src={bearImage} alt="Bear" className="bear-image" />
+      </div>
           <div className="post-input">
             <textarea
-              placeholder="Write your post here..."
+              placeholder="Write your post about image shown above here..."
               value={postContent}
               onChange={handleInputChange}
             />
-            <button onClick={handlePost}>Post</button>
+            <div className='post-btn-container'>
+            
+            <span className={`word-count ${postContent.length > TOTAL_WORDS ? 'exceeded' : ''}`}>
+          {postContent.length}/{TOTAL_WORDS}
+          </span> 
+          <button onClick={handlePost} className='post-btn'>Post</button>
+            </div>
           </div>
           <h2>Posts</h2>
           <div className="posts-list">

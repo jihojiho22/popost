@@ -1,7 +1,9 @@
+
+
 const Home = () => {
     return(
         <>
-        home
+        Welcome to POPOST!!
         </>
     )
 }
